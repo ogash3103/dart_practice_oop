@@ -1,17 +1,22 @@
-import 'package:dart_practice_oop/user.dart';
+ void main()
+ {
+    print(count('aaabbbdgg', 'bbbaaadgdgr'));
+ }
 
-void main()
-{
-  var user1 = User(
-    1,
-    'Og‘abek',
-    'Faxriddinov',
-    'ogabek@mail.com',
-    'ogabek.dev',
-    '+998900001122',
-    'strongPass123',
-    true,
-  );
+ int count(String a, String b)
+ {
 
-  user1.displayInfo();
-}
+   Set<String> charsB = b.split('').toSet();
+
+   int matchCount = 0;
+
+   for(final charB in charsB)
+     {
+       if(a.contains(charB))
+         {
+           matchCount++;
+         }
+     }
+
+   return matchCount;
+ }
