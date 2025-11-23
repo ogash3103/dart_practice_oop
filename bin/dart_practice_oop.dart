@@ -1,20 +1,11 @@
 
 void main(){
-  print(check(3, 9, 11));
+ sortNumbers(35, 9, 11);
 }
 
-int check([int a = 1, int b = 1, int c = 1])
+void sortNumbers([int a = 0, int b = 0, int c = 10])
 {
-  int evenCount = 0;
-  int oddCount = 0;
-  if(a % 2 == 0) evenCount++;
-  if(b % 2 == 0) evenCount++;
-  if(c % 2 == 0) evenCount++;
-
-  oddCount = 3 - evenCount;
-
-  if(evenCount >= 2) return 1;
-  if(oddCount >= 2) return 2;
-
-  return 0;
+  List<int> list = [a, b ,c];
+  list.sort();
+  print("Natija: $list");
 }
