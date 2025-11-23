@@ -1,15 +1,19 @@
 
-import 'dart:mirrors';
-
 void main()
 {
-  print(raqamlarYigindisi(54321));
+  print(checkNumbers(a: 5, b: 6, c: 4));
 }
 
-int raqamlarYigindisi(int n)
+
+int checkNumbers({required int a, required int b, required int c})
 {
-  if(n == 0) return 0;
+  if(a == b && b == c) return 5;
 
-  return (n % 10) + raqamlarYigindisi(n ~/ 10);
+  if(a < b && b < c) return 1;
+
+  if(a > b && b > c) return 2;
+
+  if(b >= a && b >= c) return b;
+
+  return 0;
 }
-
