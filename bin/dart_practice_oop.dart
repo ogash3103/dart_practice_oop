@@ -1,11 +1,24 @@
 
 void main(){
- sortNumbers(35, 9, 11);
+  findQuadrant(x: 34, y: -56);
 }
 
-void sortNumbers([int a = 0, int b = 0, int c = 10])
+void findQuadrant({int x = 1, int y = 1})
 {
-  List<int> list = [a, b ,c];
-  list.sort();
-  print("Natija: $list");
+  if(x == 0 || y == 0) print("Xato: Nuqta koordinata o'qida yotibdi ($x, $y). Shart buzilgan.");
+
+  String result = '';
+  if (x > 0 && y > 0) {
+    result = "1-chorak";
+  } else if (x < 0 && y > 0) {
+    result = "2-chorak";
+  } else if (x < 0 && y < 0) {
+    result = "3-chorak";
+  } else if (x > 0 && y < 0) {
+    result = "4-chorak";
+  } else {
+    result = "Nuqta hech bir chorakka tegishli emas (o‘qda yotadi)";
+  }
+
+  print("Nuqta ($x, $y) → $result");
 }
