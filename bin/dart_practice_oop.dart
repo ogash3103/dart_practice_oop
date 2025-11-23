@@ -12,3 +12,4 @@ int raqamlarYigindisi(int n)
 
   return (n % 10) + raqamlarYigindisi(n ~/ 10);
 }
+
