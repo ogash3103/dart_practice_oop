@@ -1,22 +1,14 @@
- void main()
- {
-    print(count('aaabbbdgg', 'bbbaaadgdgr'));
- }
 
- int count(String a, String b)
- {
+import 'dart:mirrors';
 
-   Set<String> charsB = b.split('').toSet();
+void main()
+{
+  print(raqamlarYigindisi(54321));
+}
 
-   int matchCount = 0;
+int raqamlarYigindisi(int n)
+{
+  if(n == 0) return 0;
 
-   for(final charB in charsB)
-     {
-       if(a.contains(charB))
-         {
-           matchCount++;
-         }
-     }
-
-   return matchCount;
- }
+  return (n % 10) + raqamlarYigindisi(n ~/ 10);
+}
