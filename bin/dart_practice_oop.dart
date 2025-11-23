@@ -1,19 +1,20 @@
 
-void main()
-{
-  print(checkNumbers(a: 5, b: 6, c: 4));
+void main(){
+  print(check(3, 9, 11));
 }
 
-
-int checkNumbers({required int a, required int b, required int c})
+int check([int a = 1, int b = 1, int c = 1])
 {
-  if(a == b && b == c) return 5;
+  int evenCount = 0;
+  int oddCount = 0;
+  if(a % 2 == 0) evenCount++;
+  if(b % 2 == 0) evenCount++;
+  if(c % 2 == 0) evenCount++;
 
-  if(a < b && b < c) return 1;
+  oddCount = 3 - evenCount;
 
-  if(a > b && b > c) return 2;
-
-  if(b >= a && b >= c) return b;
+  if(evenCount >= 2) return 1;
+  if(oddCount >= 2) return 2;
 
   return 0;
 }
