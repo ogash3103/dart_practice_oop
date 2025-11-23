@@ -1,24 +1,45 @@
 
 void main(){
-  findQuadrant(x: 34, y: -56);
+  print(sonXususiyatiniAniqla(x: 34));
 }
 
-void findQuadrant({int x = 1, int y = 1})
+String sonXususiyatiniAniqla({int x = 1})
 {
-  if(x == 0 || y == 0) print("Xato: Nuqta koordinata o'qida yotibdi ($x, $y). Shart buzilgan.");
-
-  String result = '';
-  if (x > 0 && y > 0) {
-    result = "1-chorak";
-  } else if (x < 0 && y > 0) {
-    result = "2-chorak";
-  } else if (x < 0 && y < 0) {
-    result = "3-chorak";
-  } else if (x > 0 && y < 0) {
-    result = "4-chorak";
-  } else {
-    result = "Nuqta hech bir chorakka tegishli emas (o‘qda yotadi)";
+  if(x < 1 || x > 9999) {
+      return "Xato: Son [1; 9999] oralig'ida bo'lishi kerak. Berilgan qiymat: $x";
   }
 
-  print("Nuqta ($x, $y) → $result");
+  int xonalarSoni = 0;
+
+  if(x >= 1 && x <= 9 ) {
+    xonalarSoni = 1;
+  } else if(x >= 10 && x <= 99){
+    xonalarSoni = 2;
+  }else if(x >= 100 && x <= 999){
+    xonalarSoni = 3;
+  }else{
+    xonalarSoni = 4;
+  }
+
+  String juftToq;
+
+  if(x % 2 == 0){
+    juftToq = 'juft';
+  }else {
+    juftToq = 'toq';
+  }
+
+  String xonalarSoniSatr;
+  switch(xonalarSoni){
+    case 1: xonalarSoniSatr = 'bir xonali'; break;
+    case 2: xonalarSoniSatr = 'ikki xonali'; break;
+    case 3: xonalarSoniSatr = 'uch xonali'; break;
+    case 4: xonalarSoniSatr = 'turt xonali'; break;
+    default: xonalarSoniSatr = 'xonalar soni aniqlanmagan..';
+  }
+
+  return "Berilgan son $x: “$xonalarSoniSatr $juftToq son”";
+    
+
+
 }
