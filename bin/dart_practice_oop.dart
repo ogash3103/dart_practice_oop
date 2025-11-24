@@ -39,7 +39,4 @@ String sonXususiyatiniAniqla({int x = 1})
   }
 
   return "Berilgan son $x: “$xonalarSoniSatr $juftToq son”";
-    
-
-
 }
