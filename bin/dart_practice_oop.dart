@@ -1,42 +1,26 @@
-
-void main(){
-  print(sonXususiyatiniAniqla(x: 34));
+void main()
+{
+ print(ekub(12, 18, 34, 48, 56));
 }
 
-String sonXususiyatiniAniqla({int x = 1})
-{
-  if(x < 1 || x > 9999) {
-      return "Xato: Son [1; 9999] oralig'ida bo'lishi kerak. Berilgan qiymat: $x";
+int gcd2(int a, int b){
+a = a.abs();
+b = b.abs();
+
+while(b != 0)
+  {
+    int temp = b;
+    b = a % b;
+    a = temp;
   }
+  return a;
+}
 
-  int xonalarSoni = 0;
+int ekub(int a, int b, [int? c, int? d, int? e]){
+  int result = gcd2(a, b);
+  if(c != null) result = gcd2(result, c);
+  if(d != null) result = gcd2(result, d);
+  if(e != null) result = gcd2(result, e);
 
-  if(x >= 1 && x <= 9 ) {
-    xonalarSoni = 1;
-  } else if(x >= 10 && x <= 99){
-    xonalarSoni = 2;
-  }else if(x >= 100 && x <= 999){
-    xonalarSoni = 3;
-  }else{
-    xonalarSoni = 4;
-  }
-
-  String juftToq;
-
-  if(x % 2 == 0){
-    juftToq = 'juft';
-  }else {
-    juftToq = 'toq';
-  }
-
-  String xonalarSoniSatr;
-  switch(xonalarSoni){
-    case 1: xonalarSoniSatr = 'bir xonali'; break;
-    case 2: xonalarSoniSatr = 'ikki xonali'; break;
-    case 3: xonalarSoniSatr = 'uch xonali'; break;
-    case 4: xonalarSoniSatr = 'turt xonali'; break;
-    default: xonalarSoniSatr = 'xonalar soni aniqlanmagan..';
-  }
-
-  return "Berilgan son $x: “$xonalarSoniSatr $juftToq son”";
+  return result;
 }
