@@ -1,29 +1,28 @@
-import 'dart:math';
+
 
 void main(){
-  print(ekuk(12, 18));
+print(countMatchingEnds('laptop notebook esse'));
 }
-
-int ekubTwoNumbers(int a, int b)
+int countMatchingEnds(String text)
 {
-  a = a.abs();
-  b = b.abs();
+  List<String> words = text.trim().split(RegExp(r'\s+'));
 
-  while(b != 0)
+  int count = 0;
+
+  for(var word in words)
     {
-      int t = b;
-      b = a % b;
-      a = t;
+      if(word.isEmpty) {
+        continue;
+      }
+      String firstChar = word[0];
+      String endChar = word[word.length - 1];
+
+      if(firstChar == endChar)
+      {
+        count++;
+      }
     }
-    return a;
-}
 
-int ekuk(int a, int b)
-{
-  if(a == 0 || b == 0) return 0;
 
-  int gcd = ekubTwoNumbers(a, b);
-  int lcd = (a.abs() * b.abs()) ~/ gcd;
-
-  return lcd;
+return count;
 }
