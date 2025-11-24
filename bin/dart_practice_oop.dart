@@ -1,25 +1,29 @@
-void main() {
-  final word = Words();
-  String text = "O’zbekistonning poytaxti Toshkent";
-  String result = word.reverseWords(text);
-  print(result);
+import 'dart:math';
+
+void main(){
+  print(ekuk(12, 18));
 }
 
-class Words{
+int ekubTwoNumbers(int a, int b)
+{
+  a = a.abs();
+  b = b.abs();
 
-  String reverseWords(String text)
-  {
-    List<String> words = text.split(' ');
+  while(b != 0)
+    {
+      int t = b;
+      b = a % b;
+      a = t;
+    }
+    return a;
+}
 
-    List<String> reversedWords = [];
+int ekuk(int a, int b)
+{
+  if(a == 0 || b == 0) return 0;
 
-    for(var word in words)
-      {
-        String reversedWord = word.split('').reversed.join('');
+  int gcd = ekubTwoNumbers(a, b);
+  int lcd = (a.abs() * b.abs()) ~/ gcd;
 
-        reversedWords.add(reversedWord);
-      }
-
-    return reversedWords.join(' ');
-  }
+  return lcd;
 }
