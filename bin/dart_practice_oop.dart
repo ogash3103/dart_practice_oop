@@ -1,11 +1,13 @@
 void main() {
-  int n = 5;
-  String text = 'Dart';
-  if(text.length >= n) {
-    print(text);
-  }else if(text.length < n) {
-    print(text.padLeft(n, '.'));
-  }else {
-    print('xato');
-  }
+  String matn1 = "Bu Yangi Maqola Sarlavhasi";
+  final slug1 = convertedSlug(matn1);
+  print("Original: $matn1");
+  print("Slug: $slug1");
+}
+
+String convertedSlug(String text){
+String textSlug = text.toLowerCase();
+
+final result = textSlug.split(' ');
+return result.join('-');
 }
