@@ -1,28 +1,30 @@
 
 
 void main(){
-print(countMatchingEnds('laptop notebook esse'));
+  List<int> list1 = [1, 2, 3, 1, 4, 2, 5];
+  List<int> result1 = changeToZero(list1);
+
+  print('changeToZero($list1) -> $result1');
 }
-int countMatchingEnds(String text)
-{
-  List<String> words = text.trim().split(RegExp(r'\s+'));
 
-  int count = 0;
+List<int> changeToZero(List<int> numbers){
 
-  for(var word in words)
+  Map<int, int> frequency = {};
+
+  for(var number in numbers)
     {
-      if(word.isEmpty) {
-        continue;
-      }
-      String firstChar = word[0];
-      String endChar = word[word.length - 1];
-
-      if(firstChar == endChar)
-      {
-        count++;
-      }
+      frequency[number] = (frequency[number] ?? 0) + 1;
     }
 
+  List<int> result = numbers.map((number){
 
-return count;
+    if(frequency[number]! > 1){
+      return 0;
+    }else{
+      return number;
+    }
+  }).toList();
+
+  return result;
 }
+
