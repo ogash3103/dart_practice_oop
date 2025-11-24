@@ -1,16 +1,25 @@
 void main() {
-  print(fibonacciRecursive(10));
+  final word = Words();
+  String text = "O’zbekistonning poytaxti Toshkent";
+  String result = word.reverseWords(text);
+  print(result);
 }
 
-int fibonacciRecursive(int n){
+class Words{
 
-if(n < 0) throw ArgumentError("Fibonachchi indeksi (n) manfiy bo'lmasligi kerak.");
+  String reverseWords(String text)
+  {
+    List<String> words = text.split(' ');
 
-if(n == 0) return 0;
-if(n == 1) return 1;
+    List<String> reversedWords = [];
 
-return fibonacciRecursive( n - 1) + fibonacciRecursive(n - 2);
+    for(var word in words)
+      {
+        String reversedWord = word.split('').reversed.join('');
 
+        reversedWords.add(reversedWord);
+      }
 
-
+    return reversedWords.join(' ');
+  }
 }
