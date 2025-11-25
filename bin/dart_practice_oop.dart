@@ -1,13 +1,22 @@
-void main() {
-  String matn1 = "Bu Yangi Maqola Sarlavhasi";
-  final slug1 = convertedSlug(matn1);
-  print("Original: $matn1");
-  print("Slug: $slug1");
+void main(){
+  int n = 8;
+
+  printStarPattern(n);
 }
 
-String convertedSlug(String text){
-String textSlug = text.toLowerCase();
+void printStarPattern(int N){
+  print('*' * (N + 3));
 
-final result = textSlug.split(' ');
-return result.join('-');
+  for(int i = 0; i < N; i++){
+    StringBuffer row = StringBuffer();
+    row.write('*' * i);
+    row.write(' ');
+
+    int rightStarsCount = (N + 3) - (i + 1);
+
+    if(rightStarsCount > 0) row.write('*' * rightStarsCount);
+
+    print(row.toString());
+  }
+  print('*' * (N + 3));
 }
