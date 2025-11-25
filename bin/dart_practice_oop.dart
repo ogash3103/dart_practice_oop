@@ -1,19 +1,29 @@
 void main(){
-print(removeX('hxi'));
+  print(removeStars("ab*cd"));
+  print(removeStars("sm*eilly"));
+  print(removeStars("sm**eil*ly"));
 }
 
-String removeX(String s){
-if(s.isEmpty) return s;
-String result = s;
+String removeStars(String ch){
 
-if(result.startsWith('x')){
-  result = result.substring(1);
+  Set<int> deleteIndex = {};
+
+  for(int i = 0; i < ch.length; i++){
+    if(ch[i] == '*'){
+      deleteIndex.add(i);
+      if(i > 0) deleteIndex.add(i - 1);
+      if(i < ch.length) deleteIndex.add(i + 1);
+    }
+  }
+
+  String result = '';
+
+  for(int i = 0; i < ch.length; i++)
+    {
+      if(!deleteIndex.contains(i)){
+        result += ch[i];
+      }
+    }
+
+  return result;
 }
-
-if(result.length > 1 && result[1] == 'x'){
-  result = result[0] + result.substring(2);
-}
-return result;
-}
-
-
