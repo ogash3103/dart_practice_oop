@@ -1,16 +1,19 @@
 void main(){
-  String text = "2345gtn35";
-  int result = countDigits(num: text);
-  print('Raqamlar soni: $result');
+print(removeX('hxi'));
 }
 
-int countDigits({required String num}){
-  int count = 0;
-  for(var ch in num.split('')){
-    if(ch.codeUnitAt(0) >= 48 && ch.codeUnitAt(0) <= 57){
-      count++;
-    }
-  }
+String removeX(String s){
+if(s.isEmpty) return s;
+String result = s;
 
-  return count;
+if(result.startsWith('x')){
+  result = result.substring(1);
 }
+
+if(result.length > 1 && result[1] == 'x'){
+  result = result[0] + result.substring(2);
+}
+return result;
+}
+
+
