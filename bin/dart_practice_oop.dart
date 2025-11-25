@@ -1,22 +1,15 @@
 void main(){
-  int n = 8;
 
-  printStarPattern(n);
-}
+  String str = "asdfsdfgjgfjgooehmrgqwxxzmr";
 
-void printStarPattern(int N){
-  print('*' * (N + 3));
+  Map<String, int> countMap = {};
 
-  for(int i = 0; i < N; i++){
-    StringBuffer row = StringBuffer();
-    row.write('*' * i);
-    row.write(' ');
-
-    int rightStarsCount = (N + 3) - (i + 1);
-
-    if(rightStarsCount > 0) row.write('*' * rightStarsCount);
-
-    print(row.toString());
+  for(var char in str.split('')){
+    countMap[char] = (countMap[char] ?? 0) + 1;
   }
-  print('*' * (N + 3));
+
+  print('Har bir harf necha marta qatnashgan:');
+  countMap.forEach((k, v){
+    print('$k: $v');
+  });
 }
