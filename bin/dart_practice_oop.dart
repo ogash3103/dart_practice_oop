@@ -1,18 +1,14 @@
 void main(){
-  String s1 = "abababa";
-  String s2 = "aba";
+  String str1 = "Hello PDP Academy";
+  String str2 = "PDP";
 
-  int count = 0;
-  int startIndex = 0;
+  int index = str1.indexOf(str2);
 
-  while (true){
-    int index = s1.indexOf(s2, startIndex);
-
-    if(index == -1) break;
-
-    count++;
-    startIndex = index + 1;
+  if(index == -1){
+    print(str1);
+  }else{
+    String result = str1.replaceFirst(str2, "Friend");
+    print(result);
   }
-  
-  print('Natija: $count');
 }
+  
