@@ -1,16 +1,11 @@
 void main(){
-print(mixStrings('asdfgb', 'kjdnn'));
+  print(fistThree('sa'));
 }
 
-String mixStrings(String a, String b){
-  String result = '';
-
-  int maxLen = a.length > b.length ? a.length : b.length;
-
-  for(int i = 0; i < maxLen; i++){
-    if(i < a.length) result += a[i];
-    if(i < b.length) result += b[i];
+String fistThree(String str){
+  if(str.length >= 3){
+    return str.substring(0,3);
+  }else{
+    return str.padRight(3, '@');
   }
-
-  return result;
 }
