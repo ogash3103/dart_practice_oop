@@ -1,29 +1,16 @@
 void main(){
-  print(removeStars("ab*cd"));
-  print(removeStars("sm*eilly"));
-  print(removeStars("sm**eil*ly"));
+print(mixStrings('asdfgb', 'kjdnn'));
 }
 
-String removeStars(String ch){
-
-  Set<int> deleteIndex = {};
-
-  for(int i = 0; i < ch.length; i++){
-    if(ch[i] == '*'){
-      deleteIndex.add(i);
-      if(i > 0) deleteIndex.add(i - 1);
-      if(i < ch.length) deleteIndex.add(i + 1);
-    }
-  }
-
+String mixStrings(String a, String b){
   String result = '';
 
-  for(int i = 0; i < ch.length; i++)
-    {
-      if(!deleteIndex.contains(i)){
-        result += ch[i];
-      }
-    }
+  int maxLen = a.length > b.length ? a.length : b.length;
+
+  for(int i = 0; i < maxLen; i++){
+    if(i < a.length) result += a[i];
+    if(i < b.length) result += b[i];
+  }
 
   return result;
 }
