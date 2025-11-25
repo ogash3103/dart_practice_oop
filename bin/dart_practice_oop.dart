@@ -1,15 +1,18 @@
 void main(){
+  String s1 = "abababa";
+  String s2 = "aba";
 
-  String str = "asdfsdfgjgfjgooehmrgqwxxzmr";
+  int count = 0;
+  int startIndex = 0;
 
-  Map<String, int> countMap = {};
+  while (true){
+    int index = s1.indexOf(s2, startIndex);
 
-  for(var char in str.split('')){
-    countMap[char] = (countMap[char] ?? 0) + 1;
+    if(index == -1) break;
+
+    count++;
+    startIndex = index + 1;
   }
-
-  print('Har bir harf necha marta qatnashgan:');
-  countMap.forEach((k, v){
-    print('$k: $v');
-  });
+  
+  print('Natija: $count');
 }
