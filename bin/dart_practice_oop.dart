@@ -1,26 +1,13 @@
 void main(){
-  String Function(int, int, int, int) dateTime;
-  dateTime = nextSomeSecondWithDateTime;
+  int Function(int) bunny = bunnyEars;
+  print(bunny(5));
 
-  print(dateTime(2,4,0,34));
 }
 
-String nextSomeSecondWithDateTime(
-    int nowHour, int nowMinute, int nowSecond, int nextSecond){
+int bunnyEars(int bunnies){
+  if(bunnies == 0){
+    return 0;
+  }
 
-  DateTime now = DateTime(
-      DateTime.now().year,
-      DateTime.now().month,
-      DateTime.now().day,
-      nowHour,
-      nowMinute,
-      nowSecond);
-
-  DateTime nextTime = now.add(Duration(seconds: nextSecond));
-
-  String hourString = nextTime.hour.toString().padLeft(2, '0');
-  String minuteString = nextTime.minute.toString().padLeft(2, '0');
-  String secondString = nextTime.hour.toString().padLeft(2, '0');
-
-  return "$hourString:$minuteString ($secondString - second)";
+  return 2 + bunnyEars(bunnies - 1);
 }
