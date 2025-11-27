@@ -1,17 +1,26 @@
 void main(){
-  String input = """Just two weeks until the @TheBookerPrizes shortlist is 
-announced! http://bit.ly/bookerprizebso Explore the longlist and support 
-indie bookshops #2021BookerPrize #FinestFiction #ChooseIndieLinks""";
+  String Function(int, int, int, int) dateTime;
+  dateTime = nextSomeSecondWithDateTime;
 
-  String output = convertTags(input);
-
-  print(output);
+  print(dateTime(2,4,0,34));
 }
 
-String convertTags(String str){
-  final reg = RegExp(r'[@#][A-Za-z0-9_]+');
+String nextSomeSecondWithDateTime(
+    int nowHour, int nowMinute, int nowSecond, int nextSecond){
 
-  return str.replaceAllMapped(reg, (match){
-          return match.group(0)!.toUpperCase();
-  });
+  DateTime now = DateTime(
+      DateTime.now().year,
+      DateTime.now().month,
+      DateTime.now().day,
+      nowHour,
+      nowMinute,
+      nowSecond);
+
+  DateTime nextTime = now.add(Duration(seconds: nextSecond));
+
+  String hourString = nextTime.hour.toString().padLeft(2, '0');
+  String minuteString = nextTime.minute.toString().padLeft(2, '0');
+  String secondString = nextTime.hour.toString().padLeft(2, '0');
+
+  return "$hourString:$minuteString ($secondString - second)";
 }
