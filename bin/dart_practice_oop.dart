@@ -1,30 +1,66 @@
+import 'dart:math';
+
 void main(){
-  List<int> num = [1, 3, 5, 15, 17, 30];
+  int N = 10000;
+  doStSonlarniTop(N);
 
-  for(int n in num){
-    String result = fizzBuzz(number: n, checker: checkDevide);
-    print("n = $n => $result");
+  print("\n---");
+  int N2 = 300;
+  doStSonlarniTop(N2);
+}
+
+int xosBoluvchilarYigindisi(int n){
+  if( n <= 1){
+    return 0;
+  }
+
+  int yigindi = 1;
+  int limit = sqrt(n).toInt();
+
+  for(int i = 2; i <= limit; i++){
+    if(n % i == 0){
+      yigindi += i;
+      int ikkichiBuluvchi = n ~/ i;
+
+      if(ikkichiBuluvchi != i){
+        yigindi += ikkichiBuluvchi;
+      }
+    }
+  }
+
+  return yigindi;
+}
+
+void doStSonlarniTop(int n){
+  if (n < 220) {
+    print("$n gacha bo'lgan do'st sonlar topilmadi. Eng kichik juftlik (220, 284).");
+    return;
+  }
+  print("✅ $n gacha bo'lgan do'st sonlar juftliklari:");
+  Map<int, int> yigindilar = {};
+
+  for(int a = 1; a <= n; a++){
+    int b = xosBoluvchilarYigindisi(a);
+
+    if(b <= n && b > a){
+      int a_tekshiruv = yigindilar[b] ?? xosBoluvchilarYigindisi(b);
+
+      if (a_tekshiruv == a) {
+        print("  - ($a, $b)");
+      }
+
+      yigindilar[a] = b;
+    }else {
+      yigindilar[a] = b;
+    }
+  }
+
+  if (yigindilar.isEmpty) {
+    print("Hech qanday juftlik topilmadi.");
   }
 
 }
 
-bool checkDevide(int n, int dive) => n % dive == 0;
 
-String fizzBuzz({
-required int number,
-required bool Function(int n, int dive) checker}){
 
-  final isDivisibleBy3 = checker(number, 3);
-  final isDivisibleBy5 = checker(number, 5);
 
-  if(isDivisibleBy3 && isDivisibleBy5){
-    return "FizzBuzz";
-  }else if(isDivisibleBy3){
-    return 'Fizz';
-  } else if(isDivisibleBy5){
-    return 'Buzz';
-  }else {
-    return number.toString();
-  }
-
-}
