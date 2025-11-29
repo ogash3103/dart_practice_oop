@@ -1,66 +1,23 @@
-import 'dart:math';
-
 void main(){
-  int N = 10000;
-  doStSonlarniTop(N);
-
-  print("\n---");
-  int N2 = 300;
-  doStSonlarniTop(N2);
+  String s2 = "Janob 420 filmi 19:00 da boshlanadi";
+  int natija2 = digitCount(s2);
+  print("S = \"$s2\"");
+  print("Natija: $natija2\n");
 }
 
-int xosBoluvchilarYigindisi(int n){
-  if( n <= 1){
-    return 0;
-  }
-
-  int yigindi = 1;
-  int limit = sqrt(n).toInt();
-
-  for(int i = 2; i <= limit; i++){
-    if(n % i == 0){
-      yigindi += i;
-      int ikkichiBuluvchi = n ~/ i;
-
-      if(ikkichiBuluvchi != i){
-        yigindi += ikkichiBuluvchi;
-      }
-    }
-  }
-
-  return yigindi;
+bool isDigit(String char){
+  return char.isNotEmpty &&
+      char.codeUnitAt(0) >= '0'.codeUnitAt(0)
+      && char.codeUnitAt(0) <=  '9'.codeUnitAt(0);
 }
 
-void doStSonlarniTop(int n){
-  if (n < 220) {
-    print("$n gacha bo'lgan do'st sonlar topilmadi. Eng kichik juftlik (220, 284).");
-    return;
-  }
-  print("✅ $n gacha bo'lgan do'st sonlar juftliklari:");
-  Map<int, int> yigindilar = {};
+int digitCount(String s){
+  if(s.isEmpty) return 0;
 
-  for(int a = 1; a <= n; a++){
-    int b = xosBoluvchilarYigindisi(a);
+  String str1 = s[0];
+  String qolganSonlar = s.substring(1);
 
-    if(b <= n && b > a){
-      int a_tekshiruv = yigindilar[b] ?? xosBoluvchilarYigindisi(b);
+  int hisob = isDigit(str1) ? 1 : 0;
 
-      if (a_tekshiruv == a) {
-        print("  - ($a, $b)");
-      }
-
-      yigindilar[a] = b;
-    }else {
-      yigindilar[a] = b;
-    }
-  }
-
-  if (yigindilar.isEmpty) {
-    print("Hech qanday juftlik topilmadi.");
-  }
-
+  return hisob + digitCount(qolganSonlar);
 }
-
-
-
-
