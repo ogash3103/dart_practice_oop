@@ -1,20 +1,17 @@
 void main(){
-  int Function(int) sum;
-  sum = digitSum;
-  print(sum(12345));
+  String s1 = "abcde";
+  String goal1 = "cdeab";
+  bool natija1 = rotateString(s1, goal1);
+  print("S = \"$s1\", Goal = \"$goal1\"");
+  print("Natija: $natija1\n");
 }
 
-int digitSum(int n){
-  if(n < 0){
-    n = -n;
-  }
+bool rotateString(String s, String goal){
+  if(s.length != goal.length) return false;
 
-  if(n == 0) return 0;
+  if(s.isEmpty == goal.isEmpty) return true;
 
-  int oxirgiNum = n % 10;
-  print('oxirgiNum: $oxirgiNum');
-  int qolganNum = n ~/ 10;
-  print('qolganNum: $qolganNum');
+  String sKengaytirilgan = s + s;
 
-  return oxirgiNum + digitSum(qolganNum);
+  return sKengaytirilgan.contains(goal);
 }
