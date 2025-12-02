@@ -1,7 +1,25 @@
+import 'dart:ffi';
+
 void main(){
-  List<String> numString = ['1','12','1.34'];
+  List<int> nums1 = [1, 2, 2, 4];
+  int xatoRaqam1 = findErrorNumber(nums1);
 
-   var result = numString.map((e) => num.tryParse(e)).toList();
+  print("List: $nums1");
+  print("Xato ketgan (takrorlangan) raqam: $xatoRaqam1");
+}
 
-  print(result);
+int findErrorNumber(List<int> nums){
+
+  Set<int> number = {};
+  int repeatNum = -1;
+
+  for(int num in nums){
+    if(!number.add(num)){
+      repeatNum = num;
+
+      break;
+    }
+  }
+
+  return repeatNum;
 }
