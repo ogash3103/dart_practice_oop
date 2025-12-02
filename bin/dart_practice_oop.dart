@@ -1,25 +1,21 @@
-import 'dart:ffi';
+void moveZeros(List<int> num){
+  int insertPos = 0;
 
-void main(){
-  List<int> nums1 = [1, 2, 2, 4];
-  int xatoRaqam1 = findErrorNumber(nums1);
-
-  print("List: $nums1");
-  print("Xato ketgan (takrorlangan) raqam: $xatoRaqam1");
-}
-
-int findErrorNumber(List<int> nums){
-
-  Set<int> number = {};
-  int repeatNum = -1;
-
-  for(int num in nums){
-    if(!number.add(num)){
-      repeatNum = num;
-
-      break;
+  for(int i = 0; i < num.length; i++){
+    if(num[i] != 0){
+      num[insertPos] = num[i];
+      insertPos++;
     }
   }
 
-  return repeatNum;
+  while(insertPos < num.length){
+    num[insertPos] = 0;
+    insertPos++;
+  }
+}
+
+void main(){
+  List<int> nums = [0,1,0,3,12];
+  moveZeros(nums);
+  print(nums);
 }
