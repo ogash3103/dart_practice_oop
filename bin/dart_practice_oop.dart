@@ -1,19 +1,7 @@
 void main(){
-print(swapCase('FLuTTeR'));
-  
-}
+  List<String> numString = ['1','12','1.34'];
 
-String swapCase(String s){
-  final buffer = StringBuffer();
+   var result = numString.map((e) => num.tryParse(e)).toList();
 
-  for(var ch in s.split('')){
-    if(ch.contains(RegExp(r'[A-Za-z]'))){
-      buffer.write(
-        ch == ch.toUpperCase() ? ch.toLowerCase() : ch.toUpperCase()
-      );
-    }else {
-      buffer.write(ch);
-    }
-  }
-  return buffer.toString();
+  print(result);
 }
