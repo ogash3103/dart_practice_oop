@@ -1,13 +1,34 @@
-void main(){
-  const List<int> list = [2, 5, 3, 8, 7, 4];
+import 'dart:convert';
 
-  final oddProduct = list.where((x) => x.isOdd)
-      .fold<int>(1, (prod, x) => prod * x);
+import 'package:dart_practice_oop/Products/products.dart';
 
-  final evenSum = list.where((x) => x.isEven)
-      .fold<int>(0, (sum, x) => sum + x);
+void main() {
+  const rawJson = '''
+{
+  "id": 9,
+  "title": "Infinix INBOOK",
+  "description": "Infinix Inbook X1 Ci3 10th 8GB...",
+  "price": 1099,
+  "discountPercentage": 11.83,
+  "rating": 4.54,
+  "stock": 96,
+  "brand": "Infinix",
+  "category": "laptops",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+  "images": [
+    "https://cdn.dummyjson.com/product-images/9/1.jpg",
+    "https://cdn.dummyjson.com/product-images/9/2.png",
+    "https://cdn.dummyjson.com/product-images/9/3.png",
+    "https://cdn.dummyjson.com/product-images/9/4.jpg",
+    "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
+  ]
+}
+''';
 
-  final result = oddProduct - evenSum;
-  print(result);
+  final jsonMap = jsonDecode(rawJson);
+  Product product = Product.fromJson(jsonMap);
 
+  print(product.title);       // Infinix INBOOK
+  print(product.price);       // 1099
+  print(product.images.length); // 5
 }
