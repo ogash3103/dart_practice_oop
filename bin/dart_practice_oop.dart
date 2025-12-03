@@ -1,34 +1,21 @@
-import 'dart:convert';
-
-import 'package:dart_practice_oop/Products/products.dart';
-
+import 'package:dart_practice_oop/Products/Brand.dart';
 void main() {
-  const rawJson = '''
-{
-  "id": 9,
-  "title": "Infinix INBOOK",
-  "description": "Infinix Inbook X1 Ci3 10th 8GB...",
-  "price": 1099,
-  "discountPercentage": 11.83,
-  "rating": 4.54,
-  "stock": 96,
-  "brand": "Infinix",
-  "category": "laptops",
-  "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
-  "images": [
-    "https://cdn.dummyjson.com/product-images/9/1.jpg",
-    "https://cdn.dummyjson.com/product-images/9/2.png",
-    "https://cdn.dummyjson.com/product-images/9/3.png",
-    "https://cdn.dummyjson.com/product-images/9/4.jpg",
-    "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg"
-  ]
-}
-''';
+  final brands = <Brand>[
+    Brand(name: 'EKWB', productCount: 503, isSelected: false),
+    Brand(name: 'SuperMicro', productCount: 498, isSelected: false),
+    Brand(name: 'Apple', productCount: 497, isSelected: true),
+    Brand(name: 'OKI', productCount: 493, isSelected: false),
+    Brand(name: 'Crucial', productCount: 475, isSelected: false),
+    Brand(name: 'TP-Link', productCount: 456, isSelected: true),
+    Brand(name: 'HPE', productCount: 455, isSelected: false),
+    Brand(name: 'Thermaltake', productCount: 430, isSelected: false),
+    Brand(name: 'Netgear', productCount: 422, isSelected: false),
+  ];
 
-  final jsonMap = jsonDecode(rawJson);
-  Product product = Product.fromJson(jsonMap);
+  final selectedCount = brands.fold<int>(
+    0,
+        (count, brand) => brand.isSelected ? count + 1 : count,
+  );
 
-  print(product.title);       // Infinix INBOOK
-  print(product.price);       // 1099
-  print(product.images.length); // 5
+  print('Tanlangan brendlar soni: $selectedCount');
 }
