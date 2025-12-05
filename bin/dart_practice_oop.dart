@@ -1,66 +1,36 @@
-import 'package:dart_practice_oop/Computer.dart';
+import 'package:dart_practice_oop/MODEL/Photo.dart';
+
+final photosJson = [
+  {
+    "albumId": 1,
+    "id": 1,
+    "title": "accusamus beatae ad facilis cum similique qui sunt",
+    "url": "https://via.placeholder.com/600/92c952",
+    "thumbnailUrl": "https://via.placeholder.com/150/92c952"
+  },
+  {
+    "albumId": 1,
+    "id": 2,
+    "title": "reprehenderit est deserunt velit ipsam",
+    "url": "https://via.placeholder.com/600/771796",
+    "thumbnailUrl": "https://via.placeholder.com/150/771796"
+  },
+  {
+    "albumId": 1,
+    "id": 3,
+    "title": "officia porro iure quia iusto qui ipsa ut modi",
+    "url": "https://via.placeholder.com/600/24f355",
+    "thumbnailUrl": "https://via.placeholder.com/150/24f355"
+  }
+];
+
 
 void main() {
-  // 1. Generative constructor
-  Computer pc1 = Computer(
-    id: 1,
-    brand: "HP",
-    model: "Pavilion",
-    type: "desktop",
-    price: 1000,
-    ram: 16,
-    storage: 512,
-    cpuSpeed: 3.2,
-  );
+  // JSON ro‘yxatini obyektga aylantiramiz
+  List<Photo> photoList = photosJson.map((json) => Photo.fromJson(json)).toList();
 
-  // 2. Laptop constructor
-  Computer macbook = Computer.laptop(
-    id: 2,
-    brand: "Apple",
-    model: "MacBook Pro",
-    price: 1800,
-    ram: 16,
-    storage: 512,
-    cpuSpeed: 3.1,
-  );
-
-  // 3. Desktop constructor
-  Computer dell = Computer.desktop(
-    id: 3,
-    brand: "Dell",
-    model: "OptiPlex",
-  );
-
-  // 4. Const constructor
-   Computer constPc = Computer.constComputer(
-    id: 4,
-    brand: "Asus",
-    model: "ROG",
-    type: "desktop",
-  );
-
-  // 5. Factory constructor (JSON)
-  Computer fromJsonPc = Computer.fromJson({
-    "id": 5,
-    "brand": "Lenovo",
-    "model": "ThinkPad",
-    "type": "laptop",
-    "price": 1500,
-    "ram": 16,
-    "storage": 512,
-    "cpuSpeed": 2.8,
-    "isAvailable": true,
-  });
-
-  // Getter/Setter ishlatib ko‘ramiz
-  macbook.price = 2000;
-  dell.ram = 32;
-  fromJsonPc.storage = 1024;
-
-  // Info chiqaramiz
-  pc1.printInfo();
-  macbook.printInfo();
-  dell.printInfo();
-  constPc.printInfo();
-  fromJsonPc.printInfo();
+  // Tekshirish uchun ekranga chiqaramiz
+  for (var photo in photoList) {
+    print(photo);
+  }
 }
