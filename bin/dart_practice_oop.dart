@@ -1,57 +1,66 @@
-import 'package:dart_practice_oop/Products/products.dart';
+import 'package:dart_practice_oop/Computer.dart';
 
 void main() {
-
   // 1. Generative constructor
-  Product apple = Product(
+  Computer pc1 = Computer(
     id: 1,
-    name: "Apple",
-    category: "fruit",
-    price: 12.5,
-    quantity: 5,
+    brand: "HP",
+    model: "Pavilion",
+    type: "desktop",
+    price: 1000,
+    ram: 16,
+    storage: 512,
+    cpuSpeed: 3.2,
   );
 
-  // 2. Named constructor — fruit
-  Product banana = Product.fruit(
+  // 2. Laptop constructor
+  Computer macbook = Computer.laptop(
     id: 2,
-    name: "Banana",
-    price: 8,
-    quantity: 6,
+    brand: "Apple",
+    model: "MacBook Pro",
+    price: 1800,
+    ram: 16,
+    storage: 512,
+    cpuSpeed: 3.1,
   );
 
-  // 3. Named constructor — drink
-  Product cola = Product.drink(
+  // 3. Desktop constructor
+  Computer dell = Computer.desktop(
     id: 3,
-    name: "Coca-Cola",
-    price: 9,
-    quantity: 3,
+    brand: "Dell",
+    model: "OptiPlex",
   );
 
   // 4. Const constructor
-   Product sugar = Product.constProduct(
+   Computer constPc = Computer.constComputer(
     id: 4,
-    name: "Sugar",
-    category: "ingredient",
+    brand: "Asus",
+    model: "ROG",
+    type: "desktop",
   );
 
-  // 5. Factory constructor — JSON dan obyekt yaratish
-  Product milk = Product.fromJson({
+  // 5. Factory constructor (JSON)
+  Computer fromJsonPc = Computer.fromJson({
     "id": 5,
-    "name": "Milk",
-    "category": "drink",
-    "price": 7.5,
-    "quantity": 2,
+    "brand": "Lenovo",
+    "model": "ThinkPad",
+    "type": "laptop",
+    "price": 1500,
+    "ram": 16,
+    "storage": 512,
+    "cpuSpeed": 2.8,
     "isAvailable": true,
   });
 
-  // Getter/Setter ishlashi
-  milk.price = 8.0;
-  banana.quantity = 10;
+  // Getter/Setter ishlatib ko‘ramiz
+  macbook.price = 2000;
+  dell.ram = 32;
+  fromJsonPc.storage = 1024;
 
   // Info chiqaramiz
-  apple.printInfo();
-  banana.printInfo();
-  cola.printInfo();
-  sugar.printInfo();
-  milk.printInfo();
+  pc1.printInfo();
+  macbook.printInfo();
+  dell.printInfo();
+  constPc.printInfo();
+  fromJsonPc.printInfo();
 }
