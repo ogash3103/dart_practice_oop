@@ -1,47 +1,57 @@
-import 'package:dart_practice_oop/Employee.dart';
+import 'package:dart_practice_oop/Products/products.dart';
 
 void main() {
+
   // 1. Generative constructor
-  Employee emp1 = Employee(
+  Product apple = Product(
     id: 1,
-    firstName: "John",
-    lastName: "Doe",
-    position: "Developer",
-    salary: 1200,
-    experience: 2,
+    name: "Apple",
+    category: "fruit",
+    price: 12.5,
+    quantity: 5,
   );
 
-  // 2. intern named constructor
-  Employee intern = Employee.intern(
+  // 2. Named constructor — fruit
+  Product banana = Product.fruit(
     id: 2,
-    firstName: "Ali",
-    lastName: "Karimov",
+    name: "Banana",
+    price: 8,
+    quantity: 6,
   );
 
-  intern.salary = 300;        // setter ishlayapti
-  intern.experience = 1;
-
-  // 3. const constructor
-   Employee empConst = Employee.constEmployee(
+  // 3. Named constructor — drink
+  Product cola = Product.drink(
     id: 3,
-    firstName: "Const",
-    lastName: "User",
-    position: "Tester",
+    name: "Coca-Cola",
+    price: 9,
+    quantity: 3,
   );
 
-  // 4. factory constructor
-  Employee empJson = Employee.fromJson({
-    "id": 4,
-    "firstName": "Sara",
-    "lastName": "Smith",
-    "position": "Manager",
-    "salary": 2000,
-    "experience": 5,
+  // 4. Const constructor
+   Product sugar = Product.constProduct(
+    id: 4,
+    name: "Sugar",
+    category: "ingredient",
+  );
+
+  // 5. Factory constructor — JSON dan obyekt yaratish
+  Product milk = Product.fromJson({
+    "id": 5,
+    "name": "Milk",
+    "category": "drink",
+    "price": 7.5,
+    "quantity": 2,
+    "isAvailable": true,
   });
 
-  // Ma’lumotlarni chiqarish
-  emp1.printInfo();
-  intern.printInfo();
-  empConst.printInfo();
-  empJson.printInfo();
+  // Getter/Setter ishlashi
+  milk.price = 8.0;
+  banana.quantity = 10;
+
+  // Info chiqaramiz
+  apple.printInfo();
+  banana.printInfo();
+  cola.printInfo();
+  sugar.printInfo();
+  milk.printInfo();
 }
