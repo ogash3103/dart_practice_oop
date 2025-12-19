@@ -1,24 +1,8 @@
-import 'package:dart_practice_oop/audio_player.dart';
-enum Direction{
-  north,
-  south,
-  east,
-  west
-}
+import 'package:dart_practice_oop/Singleton/singleton_.dart';
+
 void main(){
-  final audio = AudioPlayer();
-
-  audio.play();
-print(getDirectionInfo(Direction.north));
+  print(AppConfig.init(
+      apiKey: "KEY_123",
+      serverUrl: "https://api.app.com",
+      isDebug: true));
 }
-
-String getDirectionInfo(Direction direction){
-
-  switch(direction){
-    case Direction.north: return "Shimol (North)";
-    case Direction.south: return "Janub (South)";
-    case Direction.east:  return "Sharq (East)";
-    case Direction.west:  return "G‘arb (West)";
-  }
-}
-
