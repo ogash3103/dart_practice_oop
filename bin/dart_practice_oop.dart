@@ -1,22 +1,15 @@
-class Print{
- int x;
- int y;
-
- Print(this.x, this.y);
-
- Print operator +(Print other ) => Print(x + other.x, y + other.y);
- Print operator -(Print other ) => Print(x - other.x, y - other.y);
- @override
- String toString() => "$x , $y";
-}
+import 'package:dart_practice_oop/shape.dart';
 
 void main(){
+  // Static methodlar class orqali chaqiriladi (obyekt shart emas)
+  print("Kvadrat yuzi (side=5): ${Shape.area(5)}");         // 25
+  print("Tortburchak yuzi (4x6): ${Shape.area(4, 6)}");     // 24
+  print("Doira yuzi (r=3): ${Shape.circleArea(3)}");        // ~28.27
 
-  final p = Print(10, 12);
-  final p2 = Print(4, 20);
+  print("-----");
 
-  final sum = p + p2;
-  final sum2 = p - p2;
-  print("$sum, $sum2");
+  dynamic s = Shape();
 
+  // Mavjud bo‘lmagan method chaqirilsa -> noSuchMethod ishlaydi
+  s.drawShape();
 }
