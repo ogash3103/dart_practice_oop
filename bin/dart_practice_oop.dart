@@ -12,7 +12,7 @@ final int age;
 
 
     @override
-  int get hashCode => name.hashCode ^ age.hashCode;
+  int get hashCode => Object.hash(name, age);
 
 }
 
