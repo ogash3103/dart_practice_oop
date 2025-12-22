@@ -1,15 +1,27 @@
-import 'package:dart_practice_oop/shape.dart';
+class Person {
+final String name;
+final int age;
+  Person(this.name, this.age);
+
+@override
+  bool operator ==(Object other) {
+  if (identical(this, other)) return true;
+
+  return other is Person && other.name == name && other.age == age;
+}
+
+    @override
+  int get hashCode => name.hashCode ^ age.hashCode;
+
+}
 
 void main(){
-  // Static methodlar class orqali chaqiriladi (obyekt shart emas)
-  print("Kvadrat yuzi (side=5): ${Shape.area(5)}");         // 25
-  print("Tortburchak yuzi (4x6): ${Shape.area(4, 6)}");     // 24
-  print("Doira yuzi (r=3): ${Shape.circleArea(3)}");        // ~28.27
+  Person p1 = Person("Ali", 25);
+  Person p2 = Person("Ali", 25);
+  Person p3 = Person("Vali", 25);
 
-  print("-----");
+  print(p1 == p2); // true
+  print(p1 == p3); // false
+  print(p1 == p1); // true
 
-  dynamic s = Shape();
-
-  // Mavjud bo‘lmagan method chaqirilsa -> noSuchMethod ishlaydi
-  s.drawShape();
 }
